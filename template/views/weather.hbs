@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {{>header}}   
+    <script src="https://kit.fontawesome.com/8385e410f4.js" crossorigin="anonymous"></script>   
+    <script src="https://kit.fontawesome.com/c9e9c9e7e6.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/b0c2bd2c09.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/37333e777f.js" crossorigin="anonymous"></script>
+</head>
+<body>
+     
+     {{>navbar}}
+
+    
+    <!-- main page -->
+
+    <div class="container-fluid main_header_1">
+        <div class="row">
+            <div class="col-md-10 col-12 mx-auto">
+               <div class="main_content">
+                   <form action="temp_form">
+                       <input type="tex" id="cityName" placeholder="Enter your city name" autocomplete="off">
+                       <input type="submit" value="search" id="submitBtn">
+                   </form>
+               </div>
+               <div class="tempInformation">
+                   <div class="top_layer">
+                       <p id="day">day</p>
+                       <p id="today_day">today</p>
+                   </div> 
+                   <div class="main_layer">
+                       <p id="city_name">city name</p>
+                       <div class="middle_layer data_hide">
+                           <p id="temp"><span id="temp_real_val">0</span><sup>o</sup>C</p>
+                           <p id="temp_status"><i class="fa-solid fa-cloud"></i></p>
+                       </div>
+                   </div>
+               </div>
+            </div>
+        </div>
+    </div>    
+
+    <!-- footer -->
+
+{{>footer}}
+  
+
+    
+    <script src="js/main.js"></script>
+    <script>
+
+        
+
+        const getCurrentDay = () =>{
+            let weekday = new Array(7);
+            weekday[0] = 'sunday';
+            weekday[1] = 'monday';
+            weekday[2] = 'tuesday';
+            weekday[3] = 'wednesday';
+            weekday[4] = 'thrusday';
+            weekday[5] = 'friday';
+            weekday[6] = 'saturday';
+
+            let currentTime = new Date();
+            days = weekday[currentTime.getDay()]
+            let day = document.getElementById('day')
+
+            day.innerText = days;
+        }
+
+        getCurrentDay();
+        
+        ///Time////       
+
+        
+        const time = () => {
+        const sday = document.getElementById('today_day')
+        const now = new Date();
+        const hours = now.getHours();
+        const mins = now.getMinutes();
+
+            if(hours>=12){
+            sday.innerText = (hours-12) + ':' + mins + '  ' + 'PM' ;
+            }
+        
+        else{
+            sday.innerText = hours + ':' + mins + '  ' + 'AM';
+        }
+        
+       }
+
+       time();
+        
+        
+        
+
+    </script>
+</body>
+</html>
